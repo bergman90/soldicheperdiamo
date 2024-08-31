@@ -20,14 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let months = now.getMonth() - startDate.getMonth();
         let days = now.getDate() - startDate.getDate();
 
-        // Adjust for negative days
+        // Adjust days and months
         if (days < 0) {
             months--;
             const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
             days += lastMonth.getDate();
         }
 
-        // Adjust for negative months
         if (months < 0) {
             years--;
             months += 12;
@@ -58,5 +57,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updatePayment(); // Chiama subito per aggiornare alla prima apertura della pagina
-    setInterval(updatePayment, 86400000); // Aggiorna ogni giorno (86400000 millisecondi)
+    setInterval(updatePayment, 1000); // Aggiorna ogni secondo (1000 millisecondi)
 });
