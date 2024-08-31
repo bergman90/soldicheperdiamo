@@ -14,11 +14,24 @@ document.addEventListener('DOMContentLoaded', () => {
         return Number(value).toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
-    function formatTime(seconds) {
-        const hours = Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const secs = seconds % 60;
-        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    function calculateTimeElapsed(startDate) {
+        const now = new Date();
+        let years = now.getFullYear() - startDate.getFullYear();
+        let months = now.getMonth() - startDate.getMonth();
+        let days = now.getDate() - startDate.getDate();
+
+        if (days < 0) {
+            months--;
+            const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+            days += lastMonth.getDate();
+        }
+
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        return { years, months, days };
     }
 
     function updatePayment() {
@@ -38,9 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
         totalOutput.textContent = `Totale = €${formatCurrency(total)}`;
 
         // Calcola e aggiorna il tempo trascorso dal 12 maggio 2010
-        const elapsedSeconds = Math.floor((now - referenceDate) / 1000);
-        timeElapsedOutput.textContent = formatTime(elapsedSeconds);
+        const { years, months, days } = calculateTimeElapsed(referenceDate);
+        timeElapsedOutput.textContent = `${years} anni ${months} mesi ${days} giorni`;
     }
 
-    setInterval(updatePayment, 1000); // Aggiorna ogni secondo
+    updatePayment(); // Chiama subito per aggiornare alla prima apertura della pagina
+    setInterval(updatePayment, 86400000); // Aggiorna ogni giorno (86400000 millisecondi)
 });
