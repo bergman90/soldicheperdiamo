@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolo Pagamento in Tempo Reale</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 40px;
+            color: #444;
+        }
+
+        .calculator {
+            margin-bottom: 40px;
+        }
+
+        .output {
+            font-size: 2em;
+            margin-top: 10px;
+            color: #222;
+        }
+
+        .description {
+            font-size: 1em;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .total {
+            font-size: 3em;
+            margin-top: 50px;
+            color: #d9534f;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quanti soldi perdiamo in tempo reale ART. 47 ACN 2019 - 2021</h1>
+
+        <!-- Primo calcolatore -->
+        <div class="calculator">
+            <div class="description">Incremento di spesa per assistito dal 1 ottobre 2022 (1.66 euro anno per assistito)</div>
+            <div id="output1" class="output">€0.00</div>
+        </div>
+
+        <!-- Secondo calcolatore -->
+        <div class="calculator">
+            <div class="description">Fondo legato ad obiettivi di miglioramento della presa in carico dei pazienti cronici (1.90 euro anno per assistito)</div>
+            <div id="output2" class="output">€0.00</div>
+        </div>
+
+        <!-- Terzo calcolatore per il totale -->
+        <div class="total" id="total">Totale = €0.00</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
