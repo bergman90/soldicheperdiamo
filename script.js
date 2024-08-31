@@ -20,12 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let months = now.getMonth() - startDate.getMonth();
         let days = now.getDate() - startDate.getDate();
 
+        // Adjust for negative days
         if (days < 0) {
             months--;
             const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
             days += lastMonth.getDate();
         }
 
+        // Adjust for negative months
         if (months < 0) {
             years--;
             months += 12;
